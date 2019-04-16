@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addTodo } from '../actions';
+import { addTodo, toggleTodo } from '../actions';
 
 
 
@@ -43,8 +43,19 @@ class TodoList extends React.Component {
 
           <button onClick={this.addTodo}>Add Todo</button>
           {this.props.todos.map((todo, index) => (
-          <div key={index} className='todo'>
+          <div 
+            onClick={() => {this.props.toggleTodo(index)}} 
+            key={index} 
+            className='todo'
+            style={{
+              textDecoration:
+                todo.completed ? 
+                  'line-through' :
+                  'none'
+            }}>
+
           <p>{todo.value}</p>
+
           </div>
           ))}
           
@@ -60,4 +71,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { addTodo })(TodoList);
+export default connect(mapStateToProps, { addTodo, toggleTodo })(TodoList);
