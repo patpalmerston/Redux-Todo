@@ -27,8 +27,10 @@ class TodoList extends React.Component {
   }
 
   render() {
+    console.log(this.props.todos)
     return (
       <div className="App">
+
         <header className="App-header">
           <h1>Pats Todo List!</h1>
         
@@ -40,7 +42,12 @@ class TodoList extends React.Component {
           onChange={this.handleChange} />
 
           <button onClick={this.addTodo}>Add Todo</button>
-          <h1>{this.props.todos.value}</h1>
+          {this.props.todos.map((todo, index) => (
+          <div key={index} className='todo'>
+          <p>{todo.value}</p>
+          </div>
+          ))}
+          
           </header>
       </div>
     );
@@ -49,7 +56,7 @@ class TodoList extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todosReducer.todos
+    todos: state.todos
   }
 }
 
