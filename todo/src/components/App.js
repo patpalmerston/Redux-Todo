@@ -1,26 +1,18 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+
+import TodoList from './TodoList';
+
 
 import './App.css';
 
-class App extends Component {
-  render() {
+function App() {
+  
     return (
       <div className="App">
-        <header className="App-header">
-        <h1>Pats Todo List!</h1>
-        <p>{this.props.todosFromRedux}</p>
-          
-        </header>
+        <TodoList />
       </div>
     );
   }
-}
 
-const mapStateToProps = state => {
-  return {
-    todosFromRedux: state.todos
-  }
-}
 
-export default connect(mapStateToProps, {})(App);
+export default App;
